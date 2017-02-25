@@ -48,6 +48,11 @@ def login():
             flash ("You were successfully logged in!")
             return redirect(url_for("secure_page"))# they should be redirected to a secure-page route instead
     return render_template("login.html", form=form)
+    
+@app.route("/secure-page")
+@login_required
+def secure_page():
+    return render_template("secure_page.html")
 
 # user_loader callback. This callback is used to reload the user object from
 # the user ID stored in the session
